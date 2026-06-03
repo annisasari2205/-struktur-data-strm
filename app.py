@@ -70,11 +70,11 @@ if "antrian" not in st.session_state:
 # HALAMAN
 # =====================================
 st.set_page_config(
-    page_title="Sistem Antrean Puskesmas",
+    page_title="Aplikasi Antrian Puskesmas",
     layout="wide"
 )
 
-st.title("🏥 SISTEM ANTREAN PUSKESMAS")
+st.title("🏥 PUSKESMAS ASFIH TANGERANG")
 st.markdown("---")
 
 # =====================================
@@ -85,7 +85,7 @@ menu = st.sidebar.selectbox(
     [
         "Beranda",
         "Daftar Pasien",
-        "Lihat Antrean",
+        "Lihat Antrian",
         "Panggil Pasien"
     ]
 )
@@ -98,10 +98,8 @@ if menu == "Beranda":
     st.header("Selamat Datang")
 
     st.write("""
-    Sistem Antrean Puskesmas menggunakan
-    Priority Queue.
+    Kami mengutamakan pelayanan terbaik dan memuaskan dengan ketentuan prioritas sebagai berikut : 
 
-    Prioritas:
     1. Darurat
     2. Lansia
     3. Ibu Hamil
@@ -129,7 +127,7 @@ elif menu == "Daftar Pasien":
         "Masukkan Nama Pasien"
     )
 
-    if st.button("Ambil Nomor Antrean"):
+    if st.button("Ambil Nomor Antrian"):
 
         if nama:
 
@@ -142,7 +140,7 @@ elif menu == "Daftar Pasien":
             )
 
             st.success(
-                f"Nomor Antrean Anda : {nomor}"
+                f"Nomor Antrian Anda : {nomor}"
             )
 
         else:
@@ -153,9 +151,9 @@ elif menu == "Daftar Pasien":
 # =====================================
 # LIHAT ANTREAN
 # =====================================
-elif menu == "Lihat Antrean":
+elif menu == "Lihat Antrian":
 
-    st.header("📋 Daftar Antrean")
+    st.header("📋 Daftar Antrian")
 
     darurat, lansia, ibu_hamil, umum = (
         st.session_state.antrian.tampilkan()
