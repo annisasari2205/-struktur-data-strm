@@ -83,29 +83,11 @@ st.markdown("---")
 menu = st.sidebar.selectbox(
     "Pilih Menu",
     [
-        "Beranda",
         "Daftar Pasien",
         "Lihat Antrian",
         "Panggil Pasien"
     ]
 )
-
-# =====================================
-# BERANDA
-# =====================================
-if menu == "Beranda":
-
-    st.header("Selamat Datang")
-
-    st.write("""
-    Kami mengutamakan pelayanan terbaik dan memuaskan dengan ketentuan prioritas sebagai berikut : 
-
-    1. Darurat
-    2. Lansia
-    3. Ibu Hamil
-    4. Umum
-    """)
-
 # =====================================
 # DAFTAR PASIEN
 # =====================================
