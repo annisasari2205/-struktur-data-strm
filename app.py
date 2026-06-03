@@ -2,7 +2,7 @@ import streamlit as st
 from collections import deque
 
 # =====================================
-# KELAS PRIORITY QUEUE
+# KELAS PRIORITY QUEUE PUSKESMAS
 # =====================================
 class PuskesmasQueue:
     def __init__(self):
@@ -67,14 +67,15 @@ if "antrian" not in st.session_state:
     st.session_state.antrian = PuskesmasQueue()
 
 # =====================================
-# HALAMAN
+# KONFIGURASI HALAMAN
 # =====================================
 st.set_page_config(
-    page_title="Aplikasi Antrian Puskesmas",
+    page_title="Sistem Antrean Puskesmas",
     layout="wide"
 )
 
-st.title("🏥 PUSKESMAS ASFIH TANGERANG")
+st.title("🏥 SISTEM ANTREAN PUSKESMAS")
+st.subheader("Implementasi Priority Queue")
 st.markdown("---")
 
 # =====================================
@@ -84,14 +85,15 @@ menu = st.sidebar.selectbox(
     "Pilih Menu",
     [
         "Daftar Pasien",
-        "Lihat Antrian",
+        "Lihat Antrean",
         "Panggil Pasien"
     ]
 )
+
 # =====================================
 # DAFTAR PASIEN
 # =====================================
-elif menu == "Daftar Pasien":
+if menu == "Daftar Pasien":
 
     st.header("📝 Pendaftaran Pasien")
 
@@ -109,7 +111,7 @@ elif menu == "Daftar Pasien":
         "Masukkan Nama Pasien"
     )
 
-    if st.button("Ambil Nomor Antrian"):
+    if st.button("Ambil Nomor Antrean"):
 
         if nama:
 
@@ -122,7 +124,7 @@ elif menu == "Daftar Pasien":
             )
 
             st.success(
-                f"Nomor Antrian Anda : {nomor}"
+                f"Nomor Antrean Anda : {nomor}"
             )
 
         else:
@@ -133,9 +135,9 @@ elif menu == "Daftar Pasien":
 # =====================================
 # LIHAT ANTREAN
 # =====================================
-elif menu == "Lihat Antrian":
+elif menu == "Lihat Antrean":
 
-    st.header("📋 Daftar Antrian")
+    st.header("📋 Daftar Antrean")
 
     darurat, lansia, ibu_hamil, umum = (
         st.session_state.antrian.tampilkan()
@@ -145,35 +147,47 @@ elif menu == "Lihat Antrian":
 
     with col1:
 
-        st.subheader("🚑 Darurat")
+        st.subheader("🚑 Antrean Darurat")
 
-        for p in darurat:
-            st.write(
-                f"No {p['nomor']} - {p['nama']}"
-            )
+        if darurat:
+            for p in darurat:
+                st.error(
+                    f"No {p['nomor']} - {p['nama']}"
+                )
+        else:
+            st.write("Kosong")
 
-        st.subheader("👴 Lansia")
+        st.subheader("👴 Antrean Lansia")
 
-        for p in lansia:
-            st.write(
-                f"No {p['nomor']} - {p['nama']}"
-            )
+        if lansia:
+            for p in lansia:
+                st.warning(
+                    f"No {p['nomor']} - {p['nama']}"
+                )
+        else:
+            st.write("Kosong")
 
     with col2:
 
-        st.subheader("🤰 Ibu Hamil")
+        st.subheader("🤰 Antrean Ibu Hamil")
 
-        for p in ibu_hamil:
-            st.write(
-                f"No {p['nomor']} - {p['nama']}"
-            )
+        if ibu_hamil:
+            for p in ibu_hamil:
+                st.info(
+                    f"No {p['nomor']} - {p['nama']}"
+                )
+        else:
+            st.write("Kosong")
 
-        st.subheader("👤 Umum")
+        st.subheader("👤 Antrean Umum")
 
-        for p in umum:
-            st.write(
-                f"No {p['nomor']} - {p['nama']}"
-            )
+        if umum:
+            for p in umum:
+                st.success(
+                    f"No {p['nomor']} - {p['nama']}"
+                )
+        else:
+            st.write("Kosong")
 
 # =====================================
 # PANGGIL PASIEN
@@ -182,7 +196,10 @@ elif menu == "Panggil Pasien":
 
     st.header("📢 Panggil Pasien")
 
-    if st.button("Panggil Berikutnya"):
+    if st.button(
+        "Panggil Pasien Berikutnya",
+        use_container_width=True
+    ):
 
         pasien = (
             st.session_state.antrian
@@ -195,10 +212,13 @@ elif menu == "Panggil Pasien":
                 f"Nomor {pasien['nomor']} - "
                 f"{pasien['nama']} "
                 f"({pasien['kategori']}) "
-                f"silakan menuju ruang pemeriksaan"
+                f"silakan menuju ruang pemeriksaan."
             )
+
+            st.balloons()
 
         else:
             st.warning(
-                "Tidak ada pasien dalam antrean"
+                "Tidak ada pasien dalam antrean."
             )
+       
