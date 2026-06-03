@@ -64,7 +64,7 @@ class PuskesmasQueue:
 # SESSION STATE
 # =====================================
 if "antrian" not in st.session_state:
-    st.session_state.antrean = PuskesmasQueue()
+    st.session_state.antrian = PuskesmasQueue()
 
 # =====================================
 # KONFIGURASI HALAMAN
