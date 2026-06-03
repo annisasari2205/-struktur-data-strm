@@ -75,7 +75,7 @@ st.set_page_config(
 )
 
 st.title("🏥 PUSKESMAS ASFIH TANGERANG")
-st.subheader("Implementasi Priority Queue")
+st.subheader("Selamat Datang !")
 st.markdown("---")
 
 # =====================================
