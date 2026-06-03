@@ -64,7 +64,7 @@ class PuskesmasQueue:
 # SESSION STATE
 # =====================================
 if "antrian" not in st.session_state:
-    st.session_state.antrian = PuskesmasQueue()
+    st.session_state.antrean = PuskesmasQueue()
 
 # =====================================
 # KONFIGURASI HALAMAN
@@ -74,7 +74,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🏥 SISTEM ANTREAN PUSKESMAS")
+st.title("🏥 PUSKESMAS ASFIH TANGERANG")
 st.subheader("Implementasi Priority Queue")
 st.markdown("---")
 
