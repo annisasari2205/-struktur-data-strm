@@ -71,18 +71,41 @@ if "antrian" not in st.session_state:
 # =====================================
 st.set_page_config(
     page_title="Sistem Antrean Puskesmas",
+    page_icon="🏥",
     layout="wide"
 )
 
-st.title("🏥 PUSKESMAS ASFIH TANGERANG")
-st.subheader("Selamat Datang ! Sistem ini digunakan untuk mengelola antrean pasien secara cepat dan mudah")
+# =====================================
+# HEADER
+# =====================================
+st.markdown("""
+<div style="
+background-color:#EAF4FF;
+padding:20px;
+border-radius:10px;
+border-left:6px solid #1F77B4;
+text-align:center;">
+
+<h1 style="color:#1F77B4;">
+🏥 PUSKESMAS ASFIH TANGERANG
+</h1>
+
+<p style="font-size:18px; color:#333333;">
+Selamat Datang! <br>
+Sistem ini digunakan untuk mengelola antrean pasien secara cepat,
+mudah, dan terorganisir menggunakan <b>Priority Queue</b>.
+</p>
+
+</div>
+""", unsafe_allow_html=True)
+
 st.markdown("---")
 
 # =====================================
 # MENU UTAMA
 # =====================================
 menu = st.sidebar.selectbox(
-    "Pilih Menu",
+    "📋 Pilih Menu",
     [
         "Daftar Pasien",
         "Lihat Antrean",
@@ -124,12 +147,13 @@ if menu == "Daftar Pasien":
             )
 
             st.success(
-                f"Nomor Antrean Anda : {nomor}"
+                f"✅ Nomor Antrean Anda : {nomor}"
             )
 
         else:
+
             st.warning(
-                "Nama pasien harus diisi!"
+                "⚠️ Nama pasien harus diisi!"
             )
 
 # =====================================
@@ -137,7 +161,7 @@ if menu == "Daftar Pasien":
 # =====================================
 elif menu == "Lihat Antrean":
 
-    st.header("📋 Daftar Antrean")
+    st.header("📋 Daftar Antrean Pasien")
 
     darurat, lansia, ibu_hamil, umum = (
         st.session_state.antrian.tampilkan()
@@ -209,16 +233,19 @@ elif menu == "Panggil Pasien":
         if pasien:
 
             st.success(
-                f"Nomor {pasien['nomor']} - "
-                f"{pasien['nama']} "
-                f"({pasien['kategori']}) "
-                f"silakan menuju ruang pemeriksaan."
+                f"""
+                Nomor {pasien['nomor']} - {pasien['nama']}
+                
+                Kategori : {pasien['kategori']}
+                
+                Silakan menuju ruang pemeriksaan.
+                """
             )
 
             st.balloons()
 
         else:
+
             st.warning(
-                "Tidak ada pasien dalam antrean."
+                "⚠️ Tidak ada pasien dalam antrean."
             )
-       
