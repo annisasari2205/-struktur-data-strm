@@ -79,20 +79,20 @@ st.set_page_config(
 # HEADER
 # =====================================
 st.markdown("""
-<div style="
-padding:20px;
-border-radius:10px;
-border-left:6px solid #1F77B4;
-text-align:center;">
-
-<h1 style="color:#1F77B4;">
+<h1 style="
+text-align:center;
+color:#0066CC;">
 🏥 PUSKESMAS ASFIH TANGERANG
 </h1>
 
-<p style="font-size:18px; color:#333333;">
-Selamat Datang! <br>
-Sistem ini digunakan untuk mengelola antrean pasien secara cepat, dan mudah.
+<p style="
+text-align:center;
+font-size:18px;
+color:#666666;">
+Selamat Datang! Sistem ini digunakan untuk mengelola antrean pasien secara cepat,
+mudah, dan terorganisir menggunakan <b>Priority Queue</b>.
 </p>
+""", unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -142,13 +142,13 @@ if menu == "Daftar Pasien":
             )
 
             st.success(
-                f"✅ Nomor Antrean Anda : {nomor}"
+                f"Nomor Antrean Anda : {nomor}"
             )
 
         else:
 
             st.warning(
-                "⚠️ Nama pasien harus diisi!"
+                "Nama pasien harus diisi!"
             )
 
 # =====================================
@@ -229,12 +229,14 @@ elif menu == "Panggil Pasien":
 
             st.success(
                 f"""
-                Nomor {pasien['nomor']} - {pasien['nama']}
-                
-                Kategori : {pasien['kategori']}
-                
-                Silakan menuju ruang pemeriksaan.
-                """
+Nomor Antrean : {pasien['nomor']}
+
+Nama Pasien : {pasien['nama']}
+
+Kategori : {pasien['kategori']}
+
+Silakan menuju ruang pemeriksaan.
+"""
             )
 
             st.balloons()
@@ -242,5 +244,5 @@ elif menu == "Panggil Pasien":
         else:
 
             st.warning(
-                "⚠️ Tidak ada pasien dalam antrean."
+                "Tidak ada pasien dalam antrean."
             )
