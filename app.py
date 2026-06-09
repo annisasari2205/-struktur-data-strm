@@ -80,7 +80,6 @@ st.set_page_config(
 # =====================================
 st.markdown("""
 <div style="
-background-color:#EAF4FF;
 padding:20px;
 border-radius:10px;
 border-left:6px solid #1F77B4;
@@ -92,12 +91,8 @@ text-align:center;">
 
 <p style="font-size:18px; color:#333333;">
 Selamat Datang! <br>
-Sistem ini digunakan untuk mengelola antrean pasien secara cepat,
-mudah, dan terorganisir menggunakan <b>Priority Queue</b>.
+Sistem ini digunakan untuk mengelola antrean pasien secara cepat, dan mudah.
 </p>
-
-</div>
-""", unsafe_allow_html=True)
 
 st.markdown("---")
 
