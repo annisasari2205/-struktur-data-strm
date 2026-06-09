@@ -75,7 +75,7 @@ st.set_page_config(
 )
 
 st.title("🏥 PUSKESMAS ASFIH TANGERANG")
-st.subheader("Selamat Datang !")
+st.subheader("Selamat Datang ! Sistem ini digunakan untuk mengelola antrean pasien secara cepat dan mudah")
 st.markdown("---")
 
 # =====================================
